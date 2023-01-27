@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoresFormRequest;
 use App\Models\Store;
-use Illuminate\Http\Request;
-use Throwable;
 
 class StoreController extends Controller
 {
@@ -38,17 +36,16 @@ class StoreController extends Controller
     {
         $validated = $request->validated();
 
-        $store = $store::query()
-            ->update([
+        $store->update([
                 'name' => $validated['name'],
                 'description' => $validated['description']
             ]);
 
-        return response()->json($store);
+        return $store;
     }
 
     public function destroy(Store $store)
     {
-        $store::destroy();
+        return $store->delete();
     }
 }

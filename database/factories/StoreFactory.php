@@ -19,7 +19,7 @@ class StoreFactory extends Factory
     {
         return [
             'name' => $this->faker->company(),
-            'description' => $this->faker->sentence
+            'description' => $this->faker->sentence()
         ];
     }
 }

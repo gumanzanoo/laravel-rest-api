@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoresFormRequest extends FormRequest
+class ProductFormRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -17,7 +17,8 @@ class StoresFormRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
-            'description' => 'nullable|min:13|max:255'
+            'description' => 'nullable|min:13|max:255',
+            'price' => 'required'
         ];
     }
     protected function failedValidation(Validator $validator) {

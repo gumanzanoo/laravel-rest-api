@@ -13,7 +13,13 @@
 					"name": "create a new store",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"West Backery\",\r\n    \"description\": \"The greatest Backery of all time\"\r\n}",
@@ -39,6 +45,9 @@
 				},
 				{
 					"name": "all stores",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -48,6 +57,15 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": 1,\r\n    \"perPage\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/api/stores",
 							"protocol": "http",
@@ -66,7 +84,13 @@
 					"name": "store by id",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost/api/stores/{id}",
 							"protocol": "http",
@@ -86,7 +110,13 @@
 					"name": "update a store",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"New Name\",\r\n    \"description\": \"New description\"\r\n}",
@@ -115,7 +145,13 @@
 					"name": "delete a store",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost/api/stores/{id}",
 							"protocol": "http",
@@ -140,7 +176,13 @@
 					"name": "create a new product for a store",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"Butterscotch\",\r\n    \"description\": \"The greatest Butterscotch of all time\",\r\n    \"price\": 50\r\n}",
@@ -168,6 +210,9 @@
 				},
 				{
 					"name": "list of all products of a store",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -177,6 +222,15 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": 1,\r\n    \"perPage\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/api/stores/{id}/products",
 							"protocol": "http",
@@ -197,7 +251,13 @@
 					"name": "product by id",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost/api/stores/{id}/products/{id}",
 							"protocol": "http",
@@ -219,7 +279,13 @@
 					"name": "update a product",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"New Name\",\r\n    \"description\": \"New description\",\r\n    \"price\": 0.00\r\n}",
@@ -250,7 +316,13 @@
 					"name": "delete a product",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost/api/stores/{id}/products/{id}",
 							"protocol": "http",

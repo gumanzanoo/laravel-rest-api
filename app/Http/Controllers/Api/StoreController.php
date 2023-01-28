@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateStore;
 use App\Http\Requests\UpdateStore;
 use App\Models\Store;
+use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Store::paginate(10);
+        $perPage = $request->perPage ?? 10;
+
+        return Store::paginate($perPage);
     }
 
     public function store(CreateStore $request)
@@ -43,6 +46,8 @@ class StoreController extends Controller
 
     public function destroy(Store $store)
     {
-        return $store->delete();
+        $store->delete();
+
+        return response("Store deleted.", 200);
     }
 }

@@ -5,13 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProduct;
 use App\Http\Requests\UpdateProduct;
+use App\Models\Product;
 use App\Models\Store;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(Store $store)
+    public function index(Store $store, Request $request)
     {
-        return $store->load('products');
+        $perPage = $request->perPage ?? 10;
+
+        return $store->products()
+            ->paginate($perPage);
     }
 
     public function store(CreateProduct $request, Store $store)
@@ -28,11 +33,9 @@ class ProductController extends Controller
         return $store->products()->latest()->first();
     }
 
-    public function show(Store $store, $id)
+    public function show($id, Product $product)
     {
-        return $store->load(['products' => function ($query) use ($id) {
-            $query->whereId($id);
-        }]);
+        return $product::whereStoreId($id)->first();
     }
 
     public function update(UpdateProduct $request, Store $store, $id)
@@ -51,6 +54,8 @@ class ProductController extends Controller
 
     public function destroy(Store $store, $id)
     {
-        return $store->products()->find($id)->delete();
+        $store->products()->find($id)->delete();
+
+        return response("Product deleted.", 200);
     }
 }

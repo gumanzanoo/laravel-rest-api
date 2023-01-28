@@ -11,7 +11,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        return Store::paginate(5);
+        return Store::paginate(10);
     }
 
     public function store(CreateStore $request)

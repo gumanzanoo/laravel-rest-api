@@ -3,36 +3,33 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoresFormRequest;
+use App\Http\Requests\CreateStore;
+use App\Http\Requests\UpdateStore;
 use App\Models\Store;
 
 class StoreController extends Controller
 {
     public function index()
     {
-        $stores = Store::paginate(5);
-
-        return response()->json($stores);
+        return Store::paginate(5);
     }
 
-    public function store(StoresFormRequest $request)
+    public function store(CreateStore $request)
     {
         $validated = $request->validated();
 
-        $store = Store::create([
+        return Store::create([
             'name' => $validated['name'],
             'description' => $validated['description']
         ]);
-
-        return response()->json($store);
     }
 
     public function show(Store $store)
     {
-        return response()->json($store);
+        return $store;
     }
 
-    public function update(StoresFormRequest $request, Store $store)
+    public function update(UpdateStore $request, Store $store)
     {
         $validated = $request->validated();
 

@@ -14,8 +14,4 @@ After download it, you must run the commands below:
 3. php artisan db:seed
 4. Import the json api collection file to you postman
 ```
-    
-## Documentation
-
-See the Postman documentation [here](https://documenter.getpostman.com/view/21801632/2s8ZDeUzRw).
 
